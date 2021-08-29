@@ -19,21 +19,21 @@ set(CMAKE_CXX_FLAGS "-O3")
 set(CMAKE_CXX_FLAGS_DEBUG "-O0 -g")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -march=native")
 
-#checks if VTK is available
-find_package(VTK QUIET)
-if(VTK_FOUND)
-	set(HAVE_VTK 1)
-endif()
+# #checks if VTK is available
+# find_package(VTK QUIET)
+# if(VTK_FOUND)
+# 	set(HAVE_VTK 1)
+# endif()
 
-#Generates config.h replacing expressions in config.h.in with actual values
-configure_file(
-  "${CMAKE_CURRENT_SOURCE_DIR}/config.h.in"
-  "${CMAKE_CURRENT_SOURCE_DIR}/config.h"
-)
+# #Generates config.h replacing expressions in config.h.in with actual values
+# configure_file(
+#   "${CMAKE_CURRENT_SOURCE_DIR}/config.h.in"
+#   "${CMAKE_CURRENT_SOURCE_DIR}/config.h"
+# )
 
 add_executable(${PROJECT_NAME} main.cpp  makelevelset3.cpp)
 
-if(VTK_FOUND)
-	include_directories(${VTK_INCLUDE_DIRS})
-	target_link_libraries(${PROJECT_NAME} ${VTK_LIBRARIES})
-endif()
+# if(VTK_FOUND)
+# 	include_directories(${VTK_INCLUDE_DIRS})
+# 	target_link_libraries(${PROJECT_NAME} ${VTK_LIBRARIES})
+# endif()
