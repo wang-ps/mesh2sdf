@@ -9,7 +9,7 @@ Project("SDFGen")
 #  MinSizeRel     : w/o debug symbols, w/ optimization, stripped binaries
 
 # SET(CMAKE_BUILD_TYPE Coverage)
-SET(CMAKE_BUILD_TYPE Release)
+# SET(CMAKE_BUILD_TYPE Release)
 
 #set the default path for built executables to the "bin" directory
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR}/bin)
