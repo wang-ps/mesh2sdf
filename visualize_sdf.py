@@ -1,11 +1,16 @@
-import sys
+import argparse
 import matplotlib.pyplot as plt
 import numpy as np
 import skimage.measure
 import trimesh
 
-filename = sys.argv[1]
-# filename = 'C:/Users/penwan/Desktop/debug/plane.npy'
+parser = argparse.ArgumentParser()
+parser.add_argument('--filename', type=str, required=True)
+parser.add_argument('--rescale', type=str, required=False, default='false')
+args = parser.parse_args()
+
+filename = args.filename
+rescale = args.rescale.lower() == 'true'
 
 # levels = [-0.2, -0.1, -0.05, -0.02, -0.01, 0.0, 0.01, 0.02, 0.05, 0.1, 0.2]
 levels = [-0.01, 0.0, 0.01]
@@ -14,6 +19,8 @@ levels = [-0.01, 0.0, 0.01]
 sdf = np.load(filename)
 # sdf = sdf[::2, ::2, ::2]
 size = sdf.shape[0]
+if rescale:
+  sdf = (1- sdf) * 2 - 1  # !!! rescale SDF
 print(sdf.max(), sdf.min())
 
 for i, level in enumerate(levels):
