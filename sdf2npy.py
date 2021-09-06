@@ -30,6 +30,7 @@ for filename in tqdm(filenames[args.start:args.end], ncols=80):
   filename_sobj = os.path.join(args.output_path + '.scale', filename)
   filename_robj = os.path.join(args.output_path + '.raw', filename)
   filename_nobj = os.path.join(args.output_path + '.new', filename)
+  filename_bbox = os.path.join(args.output_path + '.bbox', filename[:-3] + 'npy')
   filename_npy  = os.path.join(args.output_path + '.npy', filename[:-3] + 'npy')
 
   path_obj = os.path.dirname(filename_sobj)
@@ -44,6 +45,9 @@ for filename in tqdm(filenames[args.start:args.end], ncols=80):
   path_npy = os.path.dirname(filename_npy)
   if not os.path.exists(path_npy):
     os.makedirs(path_npy)
+  path_bbox = os.path.dirname(filename_bbox)
+  if not os.path.exists(path_bbox):
+    os.makedirs(path_bbox)
 
   # load mesh and rescale mesh
   mesh = trimesh.load(filename_in, force='mesh')
@@ -52,6 +56,9 @@ for filename in tqdm(filenames[args.start:args.end], ncols=80):
   scale = 2.0 * mul / ((bbmax - bbmin).max() + 1.0e-6)
   mesh = trimesh.Trimesh((mesh.vertices - center) * scale, mesh.faces)
   mesh.export(filename_sobj)
+
+  # save bbmin and bbmax
+  np.savez(filename_bbox, bbmax=bbmax, bbmin=bbmin, mul=mul)
 
   # run sdfgen
   cmds = [args.sdfgen, filename_sobj, str(2.0 / args.scale)]
