@@ -63,6 +63,7 @@ for filename in tqdm(filenames[args.start:args.end], ncols=80):
   # run sdfgen
   cmds = [args.sdfgen, filename_sobj, str(2.0 / args.scale)]
   cmd = ' '.join(cmds)
+  print(cmd)
   os.system(cmd)
 
   # convert sdfgen to npy
@@ -70,6 +71,7 @@ for filename in tqdm(filenames[args.start:args.end], ncols=80):
   sdf = np.fromfile(filename_sdf, dtype=np.float32)
   sdf = np.reshape(sdf, [args.scale] * 3)
   sdf = np.transpose(sdf, (2, 1, 0))
+  sdf = np.abs(sdf)  # !!! Note: the negative value is not reliable !!!
   os.remove(filename_sdf)
 
   # extract mesh
@@ -81,11 +83,13 @@ for filename in tqdm(filenames[args.start:args.end], ncols=80):
   # keep the max component of the extracted mesh -> get filename_nobj
   cmds = [args.pieces, '--filename', filename_robj, '--output_path', path_new]
   cmd = ' '.join(cmds)
+  print(cmd)
   os.system(cmd)
 
   # run sdfgen
   cmds = [args.sdfgen, filename_nobj, str(2.0 / args.scale)]
   cmd = ' '.join(cmds)
+  print(cmd)
   os.system(cmd)
 
   # convert sdfgen to npy
