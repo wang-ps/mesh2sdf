@@ -21,7 +21,9 @@ sdf = np.load(filename)
 # sdf = sdf[::2, ::2, ::2]
 size = sdf.shape[0]
 if rescale:
-  sdf = (1- sdf) * 2 - 1  # !!! rescale SDF
+  # sdf = (1- sdf) * 2 - 1  # !!! rescale SDF
+  sdf = sdf * 2 - 1  # !!! rescale SDF
+
 print(sdf.max(), sdf.min())
 
 for i, level in enumerate(levels):
