@@ -42,8 +42,8 @@ for i, level in enumerate(levels):
 
 
 ## draw image
-for i in range(128):
-  array_2d = sdf[:,:,i]
+for i in range(size):
+  array_2d = sdf[i,:,:]
 
   num_levels = 6
   fig, ax = plt.subplots(figsize=(2.75, 2.75), dpi=300)
