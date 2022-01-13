@@ -49,7 +49,7 @@ for filename in tqdm(filenames[args.start:args.end], ncols=80):
   if not os.path.exists(path_bbox):
     os.makedirs(path_bbox)
 
-  # load mesh and rescale mesh
+  # load mesh and rescale mesh to [-1, 1], note the factor **mul**
   mesh = trimesh.load(filename_in, force='mesh')
   bbmin, bbmax = mesh.vertices.min(axis=0), mesh.vertices.max(axis=0)
   center = (bbmin + bbmax) / 2.0
