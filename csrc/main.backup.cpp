@@ -116,20 +116,7 @@ int main(int argc, char* argv[]) {
   outfile.close();
   std::cout << "Processing complete.\n";
 
-  //// save to txt files
-  // std::string outname;
-  // outname = filename.substr(0, filename.size() - 4) + std::string(".sdf");
-  // std::cout << "Writing results to: " << outname << "\n";
-  // std::ofstream outfile(outname.c_str());
-  // outfile << phi_grid.ni << " " << phi_grid.nj << " " << phi_grid.nk <<
-  // std::endl; outfile << min_box[0]  << " " << min_box[1]  << " " <<
-  // min_box[2]
-  // << std::endl; outfile << dx << std::endl; for (unsigned int i = 0; i <
-  // phi_grid.a.size(); ++i) {
-  //  outfile << phi_grid.a[i] << std::endl;
-  //}
-  // outfile.close();
-  // std::cout << "Processing complete.\n";
+  
 
   return 0;
 }
