@@ -46,7 +46,13 @@ py::array_t<float> compute(py::array_t<float> vertices,
 
 PYBIND11_MODULE(mesh2sdf, m) {
   m.def("compute", &compute, R"pbdoc(
-        Compute the SDF from an input mesh. This is a python wrapper based on pybind11. 
+        Compute the SDF from an input mesh.
+
+        Args:
+          vertices (np.ndarray): The vertex array with shape (Nv, 3), and
+              vertices MUST be in range [-1, 1].
+          faces (np.ndarray): The face array with shape (Nf, 3).
+          size (int): The resolution of resulting SDF.
         )pbdoc",
         py::arg("vertices"), py::arg("faces"), py::arg("size") = 128);
 
