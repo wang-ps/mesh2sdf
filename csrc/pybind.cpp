@@ -44,7 +44,7 @@ py::array_t<float> compute(py::array_t<float> vertices,
   return sdf;
 }
 
-PYBIND11_MODULE(mesh2sdf, m) {
+PYBIND11_MODULE(core, m) {
   m.def("compute", &compute, R"pbdoc(
         Compute the SDF from an input mesh.
 

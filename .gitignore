@@ -1,4 +1,6 @@
 .vscode
 build
+__pycache__
+*.obj
 *.egg-info
 *.pyd

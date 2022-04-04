@@ -3,6 +3,9 @@ requires = [
     "setuptools>=42",
     "wheel",
     "pybind11>=2.8.0",
+    "numpy",
+    "trimesh",
+    'scikit-image',
 ]
 
 build-backend = "setuptools.build_meta"

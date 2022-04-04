@@ -13,10 +13,10 @@ scale = 1.8 / (bbmax - bbmin).max()
 vertices = (vertices - center) * scale
 
 size = 128
-sdf = mesh2sdf.compute(vertices, mesh.faces, size)
+sdf = mesh2sdf.compute(vertices, mesh.faces, size, fix=True, level=2/size)
 v, f, _, _ = skimage.measure.marching_cubes(sdf, level=0)
 
 v = v * (2.0 / size) - 1.0
 v = v / scale + center
 mesh = trimesh.Trimesh(vertices=v, faces=f)
-mesh.export(filename[:-4] + '.out.obj')
+mesh.export(filename[:-4] + '.out.off')

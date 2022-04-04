@@ -1,13 +1,13 @@
+from setuptools import setup
 # Available at setup time due to pyproject.toml
 from pybind11.setup_helpers import Pybind11Extension, build_ext
-from setuptools import setup
 
 __version__ = '1.0.0'
 
 
 ext_modules = [
     Pybind11Extension(
-        'mesh2sdf',
+        'mesh2sdf.core',
         ['csrc/pybind.cpp', 'csrc/makelevelset3.cpp'],
         include_dirs=['csrc'],
         define_macros=[('VERSION_INFO', __version__)],),
@@ -21,6 +21,8 @@ setup(
     url='https://github.com/wang-ps/mesh2sdf',
     description='Compute the signed distance field from an input mesh',
     long_description='',
+    packages=['mesh2sdf'],
+    package_dir={'mesh2sdf': 'mesh2sdf'},
     ext_modules=ext_modules,
     cmdclass={'build_ext': build_ext},
     zip_safe=False,
