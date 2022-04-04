@@ -1,3 +1,3 @@
-# Convert ShapeNet to SDFs
+# Mesh to Signed Distance Field
 
-python sdf2npy.py
+Convert an input mesh to a signed distance field.
