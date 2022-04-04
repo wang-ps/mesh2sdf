@@ -1,8 +1,9 @@
+import os
 import trimesh
 import mesh2sdf
 import skimage.measure
 
-filename = 'C:/Users/penwan/Desktop/bunny.off'
+filename = os.path.join(os.path.dirname(__file__), 'plane.obj')
 mesh = trimesh.load(filename, force='mesh')
 
 vertices = mesh.vertices
@@ -19,4 +20,4 @@ v, f, _, _ = skimage.measure.marching_cubes(sdf, level=0)
 v = v * (2.0 / size) - 1.0
 v = v / scale + center
 mesh = trimesh.Trimesh(vertices=v, faces=f)
-mesh.export(filename[:-4] + '.out.off')
+mesh.export(filename[:-4] + '.fixed.obj')
