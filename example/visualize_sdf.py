@@ -8,6 +8,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--filename', type=str, required=True)
 args = parser.parse_args()
 
+mesh_scale = 0.9
 filename = args.filename
 levels = [-0.02, 0.0, 0.02]
 
@@ -19,7 +20,7 @@ print(sdf.max(), sdf.min())
 for i, level in enumerate(levels):
   vtx, faces, _, _ = skimage.measure.marching_cubes(sdf, level)
 
-  vtx = vtx * (2.0 / size) - 1.0
+  vtx = vtx * (mesh_scale * 2.0 / size) - 1.0
   mesh = trimesh.Trimesh(vtx, faces)
   mesh.export(filename[:-3] + 'l%.2f.obj' % level)
 

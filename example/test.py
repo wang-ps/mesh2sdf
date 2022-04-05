@@ -8,11 +8,12 @@ import skimage.measure
 filename = os.path.join(os.path.dirname(__file__), 'data', 'plane.obj')
 mesh = trimesh.load(filename, force='mesh')
 
+mesh_scale = 0.9
 vertices = mesh.vertices
 bbmin = vertices.min(0)
 bbmax = vertices.max(0)
 center = (bbmin + bbmax) * 0.5
-scale = 1.8 / (bbmax - bbmin).max()
+scale = 2.8 * mesh_scale / (bbmax - bbmin).max()
 vertices = (vertices - center) * scale
 
 size = 128
