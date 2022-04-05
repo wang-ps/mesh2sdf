@@ -29,5 +29,5 @@ python example/test.py
 ![Example of a mesh from ShapeNet](https://raw.githubusercontent.com/wang-ps/mesh2sdf/master/example/data/result.png)
 
 
-## How does it work?
+<!-- ## How does it work? -->
 

@@ -1,3 +1,4 @@
+import os
 import argparse
 import matplotlib.pyplot as plt
 import numpy as np
@@ -12,6 +13,10 @@ mesh_scale = 0.9
 filename = args.filename
 levels = [-0.02, 0.0, 0.02]
 
+folder = filename[:-4]
+if not os.path.exists(folder):
+  os.makedirs(folder)
+
 sdf = np.load(filename)
 size = sdf.shape[0]
 print(sdf.max(), sdf.min())
@@ -22,7 +27,7 @@ for i, level in enumerate(levels):
 
   vtx = vtx * (mesh_scale * 2.0 / size) - 1.0
   mesh = trimesh.Trimesh(vtx, faces)
-  mesh.export(filename[:-3] + 'l%.2f.obj' % level)
+  mesh.export(os.path.join(folder, 'l%.2f.obj' % level))
 
 
 # draw image
@@ -43,5 +48,6 @@ for i in range(size):
   ax.contour(sample, levels=levels, colors='k', linewidths=0.1)
   ax.contour(sample, levels=[0], colors='k', linewidths=0.3)
   ax.axis('off')
-  plt.savefig(filename[:-4] + '.%03d.png' % i)
+
+  plt.savefig(os.path.join(folder, '%03d.png' % i))
   # plt.show()

@@ -13,7 +13,7 @@ vertices = mesh.vertices
 bbmin = vertices.min(0)
 bbmax = vertices.max(0)
 center = (bbmin + bbmax) * 0.5
-scale = 2.8 * mesh_scale / (bbmax - bbmin).max()
+scale = 2.0 * mesh_scale / (bbmax - bbmin).max()
 vertices = (vertices - center) * scale
 
 size = 128
