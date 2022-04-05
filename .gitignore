@@ -1,7 +1,9 @@
 .vscode
 build
 dist
+data
 __pycache__
 *.obj
 *.egg-info
 *.pyd
+*.npy

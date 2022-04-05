@@ -1,9 +1,11 @@
 import os
 import trimesh
 import mesh2sdf
+import numpy as np
 import skimage.measure
 
-filename = os.path.join(os.path.dirname(__file__), 'plane.obj')
+
+filename = os.path.join(os.path.dirname(__file__), 'data', 'plane.obj')
 mesh = trimesh.load(filename, force='mesh')
 
 vertices = mesh.vertices
@@ -21,3 +23,4 @@ v = v * (2.0 / size) - 1.0
 v = v / scale + center
 mesh = trimesh.Trimesh(vertices=v, faces=f)
 mesh.export(filename[:-4] + '.fixed.obj')
+np.save(filename[:-4] + '.npy', sdf)
