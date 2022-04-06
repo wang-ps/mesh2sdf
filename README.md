@@ -34,8 +34,8 @@ python example/test.py
 - Given an input mesh, we first compute the **unsigned** distance field with the
   fast sweeping algorithm implemented by
   [Christopher Batty (SDFGen)](https://github.com/christopherbatty/SDFGen).
-  Note that the distance field can always be reliably and accurately computed
-  even though the input mesh is non-watertight.
+  Note that the unsigned distance field can always be reliably and accurately
+  computed even though the input mesh is non-watertight.
 
 - Then we extract the level sets with a small value **d** with the marching cube
   algorithm. And the extracted level sets are represented with triangle meshes
