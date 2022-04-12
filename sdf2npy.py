@@ -58,7 +58,7 @@ for filename in tqdm(filenames[args.start:args.end], ncols=80):
   mesh.export(filename_sobj)
 
   # save bbmin and bbmax
-  np.savez(filename_bbox, bbmax=bbmax, bbmin=bbmin, mul=mul)
+  np.savez(filename_bbox, bbmax=bbmax, bbmin=bbmin, mul=mul, scale=scale)
 
   # run sdfgen
   cmds = [args.sdfgen, filename_sobj, str(2.0 / args.scale)]
