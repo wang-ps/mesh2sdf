@@ -1,16 +1,14 @@
 import os
-import argparse
+import sys
 import matplotlib.pyplot as plt
 import numpy as np
 import skimage.measure
 import trimesh
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--filename', type=str, required=True)
-args = parser.parse_args()
+filename = sys.argv[1] if len(sys.argv) > 1 else  \
+    os.path.join(os.path.dirname(__file__), 'data', 'plane.npy')
 
-mesh_scale = 0.9
-filename = args.filename
+mesh_scale = 0.8
 levels = [-0.02, 0.0, 0.02]
 
 folder = filename[:-4]
