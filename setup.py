@@ -4,9 +4,6 @@ from pybind11.setup_helpers import Pybind11Extension, build_ext
 
 __version__ = '1.0.0'
 
-# "numpy",
-# "trimesh",
-# 'scikit-image',
 
 with open("README.md", "r", encoding="utf-8") as fid:
   long_description = fid.read()

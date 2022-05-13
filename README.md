@@ -38,12 +38,12 @@ python example/test.py
   computed even though the input mesh is non-watertight.
 
 - Then we extract the level sets with a small value **d** with the marching cube
-  algorithm. And the extracted level sets are represented with triangle meshes
-  and are guaranteed to be manifold.
+  algorithm. The extracted level sets are represented with triangle meshes and
+  are guaranteed to be manifold.
 
 - There exist multiple connected components in the extracted meshes, and we only
   keep the mesh with the largest bounding box.
 
-- Compute the signed distance field with the remaining triangle mesh as the
+- Compute the signed distance field again with the kept triangle mesh as the
   final output. In this way, the signed distance field (SDF) is computed for a
   non-watertight input mesh.
