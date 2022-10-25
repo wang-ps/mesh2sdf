@@ -7,11 +7,15 @@
 Converts an input mesh to a signed distance field. It can work with arbitrary
 meshes, even **non-watertight** meshes from ShapeNet.
 
-Mesh2SDF is used in our paper 
+`mesh2sdf` is used in our paper
 [Dual Octree Graph Networks (SIGGRAPH 2022)](https://wang-ps.github.io/dualocnn)
 to generate the training data.
 
 ## Installation
+
+`mesh2sdf` depends on [pybind11](https://github.com/pybind/pybind11), and C++
+compilers are needed to build the code. Supported compliers are listed
+[here](https://github.com/pybind/pybind11#supported-compilers).
 
 - Install via the following command:
     ``` shell
