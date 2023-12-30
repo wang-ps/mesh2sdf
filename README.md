@@ -10,11 +10,13 @@ meshes, even **non-watertight** meshes from ShapeNet.
 `mesh2sdf` is used in our paper
 [Dual Octree Graph Networks (SIGGRAPH 2022)](https://wang-ps.github.io/dualocnn)
 to generate the training data.
+Please cite our paper if you find the code useful for your research.
+
 
 ## Installation
 
 `mesh2sdf` depends on [pybind11](https://github.com/pybind/pybind11), and C++
-compilers are needed to build the code. Supported compliers are listed
+compilers are needed to build the code. Supported compilers are listed
 [here](https://github.com/pybind/pybind11#supported-compilers).
 
 - Install via the following command:
@@ -22,7 +24,7 @@ compilers are needed to build the code. Supported compliers are listed
     pip install mesh2sdf
     ```
 
-- Alternatively, install from source via the following commands.
+- Alternatively, install from the source code via the following commands.
     ``` shell
     git clone https://github.com/wang-ps/mesh2sdf.git
     pip install ./mesh2sdf
