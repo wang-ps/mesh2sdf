@@ -26,7 +26,7 @@ py::array_t<float> compute(py::array_t<float> vertices,
   // bounding box
   Vec3f bbmin(-1.0f, -1.0f, -1.0f);
   Vec3f bbmax(1.0f, 1.0f, 1.0f);
-  float dx = 2.0f / (float)size;
+  float dx = 2.0f / ((float)size - 1.0f);
 
   // compute level sets
   Array3f grid;
