@@ -1,6 +1,7 @@
 # Mesh2SDF
 
 [![Downloads](https://static.pepy.tech/badge/mesh2sdf)](https://pepy.tech/project/mesh2sdf)
+[![Downloads](https://static.pepy.tech/badge/mesh2sdf/month)](https://pepy.tech/project/mesh2sdf)
 [![PyPI](https://img.shields.io/pypi/v/mesh2sdf)](https://pypi.org/project/mesh2sdf/)
 
 
