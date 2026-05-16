@@ -16,8 +16,8 @@ def compute(vertices: np.ndarray, faces: np.ndarray, size: int = 128,
     size (int): The resolution of the resulting SDF.
     fix (bool): If the input mesh is not watertight, set :attr:`fix` as True.
     level (float): The value used to extract level sets when :attr:`fix` is True,
-        with a default value of 0.015 (as a reference 2/128 = 0.015625). And the
-        recommended default value is 2/size.
+        with a default value of 0.015. For grids that span [-1, 1] with endpoint
+        samples, the recommended default value is 2/(size - 1).
     return_mesh (bool): If True, also return the fixed mesh.
   '''
 
@@ -40,7 +40,7 @@ def compute(vertices: np.ndarray, faces: np.ndarray, size: int = 128,
     bbox.append((bbmax - bbmin).max())
   max_component = np.argmax(bbox)
   mesh = components[max_component]
-  mesh.vertices = mesh.vertices * (2.0 / size) - 1.0  # normalize it to [-1, 1]
+  mesh.vertices = mesh.vertices * (2.0 / (size - 1)) - 1.0  # normalize it to [-1, 1]
 
   # re-compute sdf
   sdf = mesh2sdf.core.compute(mesh.vertices, mesh.faces, size)

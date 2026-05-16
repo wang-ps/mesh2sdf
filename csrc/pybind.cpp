@@ -2,6 +2,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
+#include <stdexcept>
 #include <vector>
 
 #include "makelevelset3.h"
@@ -13,6 +14,10 @@ namespace py = pybind11;
 
 py::array_t<float> compute(py::array_t<float> vertices,
                            py::array_t<unsigned int> faces, int size) {
+  if (size < 2) {
+    throw std::runtime_error("size must be >= 2");
+  }
+
   // input
   std::vector<Vec3f> V;
   for (int i = 0; i < vertices.shape(0); ++i) {
@@ -26,7 +31,7 @@ py::array_t<float> compute(py::array_t<float> vertices,
   // bounding box
   Vec3f bbmin(-1.0f, -1.0f, -1.0f);
   Vec3f bbmax(1.0f, 1.0f, 1.0f);
-  float dx = 2.0f / (float)size;
+  float dx = 2.0f / (float)(size - 1);
 
   // compute level sets
   Array3f grid;
